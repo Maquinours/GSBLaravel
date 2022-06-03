@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
-use App\dao\ServiceVisiteur;
+use App\Dao\ServiceVisiteur;
 
 class VisiteurController extends Controller
 {

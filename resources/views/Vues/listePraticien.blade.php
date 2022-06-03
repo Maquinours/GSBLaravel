@@ -109,260 +109,47 @@
         }).resize();</script>
 </head>
 <body id="body">
-<section>
-    <!--for demo wrap-->
-    <h1>Liste praticien</h1>
-    <div class="grid grid-2">
-        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
-    </div>
-    <div class="tbl-header">
-        <table cellpadding="0" cellspacing="0" border="0">
-            <thead>
-            <tr>
-                <th>Nom</th>
-                <th>Prénom</th>
-                <th>Type</th>
-                <th>Adresse</th>
-                <th>Spécialites</th>
-                <th>Activités</th>
-            </tr>
-            </thead>
-        </table>
-    </div>
-    <div class="tbl-content">
-        <table cellpadding="0" cellspacing="0" border="0" id="myTable">
-            <tbody>
-            <tr>
-                <td>AAC</td>
-                <td>AUSTRALIAN COMPANY </td>
-                <td>$1.38</td>
-                <td>+2.01</td>
-                <td><i class="fa-solid fa-list"></i></td>
-                <td><i class="fa-solid fa-list"></i></td>
-            </tr>
-            <tr>
-                <td>AAD</td>
-                <td>AUSENCO</td>
-                <td>$2.38</td>
-                <td>-0.01</td>
-                <td>-1.36%</td>
-                <td>-1.36%</td>
-            </tr>
-            <tr>
-                <td>AAX</td>
-                <td>ADELAIDE</td>
-                <td>$3.22</td>
-                <td>+0.01</td>
-                <td>+1.36%</td>
-            </tr>
-            <tr>
-                <td>XXD</td>
-                <td>ADITYA BIRLA</td>
-                <td>$1.02</td>
-                <td>-1.01</td>
-                <td>+2.36%</td>
-            </tr>
-            <tr>
-                <td>AAC</td>
-                <td>AUSTRALIAN COMPANY </td>
-                <td>$1.38</td>
-                <td>+2.01</td>
-                <td>-0.36%</td>
-            </tr>
-            <tr>
-                <td>AAD</td>
-                <td>AUSENCO</td>
-                <td>$2.38</td>
-                <td>-0.01</td>
-                <td>-1.36%</td>
-            </tr>
-            <tr>
-                <td>AAX</td>
-                <td>ADELAIDE</td>
-                <td>$3.22</td>
-                <td>+0.01</td>
-                <td>+1.36%</td>
-            </tr>
-            <tr>
-                <td>XXD</td>
-                <td>ADITYA BIRLA</td>
-                <td>$1.02</td>
-                <td>-1.01</td>
-                <td>+2.36%</td>
-            </tr>
-            <tr>
-                <td>AAC</td>
-                <td>AUSTRALIAN COMPANY </td>
-                <td>$1.38</td>
-                <td>+2.01</td>
-                <td>-0.36%</td>
-            </tr>
-            <tr>
-                <td>AAD</td>
-                <td>AUSENCO</td>
-                <td>$2.38</td>
-                <td>-0.01</td>
-                <td>-1.36%</td>
-            </tr>
-            <tr>
-                <td>AAX</td>
-                <td>ADELAIDE</td>
-                <td>$3.22</td>
-                <td>+0.01</td>
-                <td>+1.36%</td>
-            </tr>
-            <tr>
-                <td>XXD</td>
-                <td>ADITYA BIRLA</td>
-                <td>$1.02</td>
-                <td>-1.01</td>
-                <td>+2.36%</td>
-            </tr>
-            <tr>
-                <td>AAC</td>
-                <td>AUSTRALIAN COMPANY </td>
-                <td>$1.38</td>
-                <td>+2.01</td>
-                <td>-0.36%</td>
-            </tr>
-            <tr>
-                <td>AAD</td>
-                <td>AUSENCO</td>
-                <td>$2.38</td>
-                <td>-0.01</td>
-                <td>-1.36%</td>
-            </tr>
-            <tr>
-                <td>AAX</td>
-                <td>ADELAIDE</td>
-                <td>$3.22</td>
-                <td>+0.01</td>
-                <td>+1.36%</td>
-            </tr>
-            <tr>
-                <td>XXD</td>
-                <td>ADITYA BIRLA</td>
-                <td>$1.02</td>
-                <td>-1.01</td>
-                <td>+2.36%</td>
-            </tr>
-            <tr>
-                <td>AAC</td>
-                <td>AUSTRALIAN COMPANY </td>
-                <td>$1.38</td>
-                <td>+2.01</td>
-                <td>-0.36%</td>
-            </tr>
-            <tr>
-                <td>AAD</td>
-                <td>AUSENCO</td>
-                <td>$2.38</td>
-                <td>-0.01</td>
-                <td>-1.36%</td>
-            </tr>
-            <tr>
-                <td>AAX</td>
-                <td>ADELAIDE</td>
-                <td>$3.22</td>
-                <td>+0.01</td>
-                <td>+1.36%</td>
-            </tr>
-            <tr>
-                <td>XXD</td>
-                <td>ADITYA BIRLA</td>
-                <td>$1.02</td>
-                <td>-1.01</td>
-                <td>+2.36%</td>
-            </tr>
-            <tr>
-                <td>AAC</td>
-                <td>AUSTRALIAN COMPANY </td>
-                <td>$1.38</td>
-                <td>+2.01</td>
-                <td>-0.36%</td>
-            </tr>
-            <tr>
-                <td>AAD</td>
-                <td>AUSENCO</td>
-                <td>$2.38</td>
-                <td>-0.01</td>
-                <td>-1.36%</td>
-            </tr>
-            <tr>
-                <td>AAX</td>
-                <td>ADELAIDE</td>
-                <td>$3.22</td>
-                <td>+0.01</td>
-                <td>+1.36%</td>
-            </tr>
-            <tr>
-                <td>XXD</td>
-                <td>ADITYA BIRLA</td>
-                <td>$1.02</td>
-                <td>-1.01</td>
-                <td>+2.36%</td>
-            </tr>
-            <tr>
-                <td>AAC</td>
-                <td>AUSTRALIAN COMPANY </td>
-                <td>$1.38</td>
-                <td>+2.01</td>
-                <td>-0.36%</td>
-            </tr>
-            <tr>
-                <td>AAD</td>
-                <td>AUSENCO</td>
-                <td>$2.38</td>
-                <td>-0.01</td>
-                <td>-1.36%</td>
-            </tr>
-            <tr>
-                <td>AAX</td>
-                <td>ADELAIDE</td>
-                <td>$3.22</td>
-                <td>+0.01</td>
-                <td>+1.36%</td>
-            </tr>
-            <tr>
-                <td>XXD</td>
-                <td>ADITYA BIRLA</td>
-                <td>$1.02</td>
-                <td>-1.01</td>
-                <td>+2.36%</td>
-            </tr>
-            <tr>
-                <td>AAC</td>
-                <td>AUSTRALIAN COMPANY </td>
-                <td>$1.38</td>
-                <td>+2.01</td>
-                <td>-0.36%</td>
-            </tr>
-            <tr>
-                <td>AAD</td>
-                <td>AUSENCO</td>
-                <td>$2.38</td>
-                <td>-0.01</td>
-                <td>-1.36%</td>
-            </tr>
-            <tr>
-                <td>AAX</td>
-                <td>ADELAIDE</td>
-                <td>$3.22</td>
-                <td>+0.01</td>
-                <td>+1.36%</td>
-            </tr>
-            <tr>
-                <td>XXD</td>
-                <td>ADITYA BIRLA</td>
-                <td>$1.02</td>
-                <td>-1.01</td>
-                <td>+2.36%</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-</section>
-</div>
+@isset($error)
+    <p>Une erreur a eu lieu. Veuillez réessayer ultérieurement</p>
+@else
+    <section>
+        <!--for demo wrap-->
+        <h1>Liste praticien</h1>
+        <div class="grid grid-2">
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+        </div>
+        <div class="tbl-header">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Type</th>
+                    <th>Adresse</th>
+                    <th>Spécialites</th>
+                    <th>Activités</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="tbl-content">
+            <table cellpadding="0" cellspacing="0" border="0" id="myTable">
+                <tbody>
+                @foreach($praticiens as $praticien)
+                    <tr>
+                        <td>{{$praticien->nom_praticien}}</td>
+                        <td>{{$praticien->prenom_praticien}}</td>
+                        <td>{{$praticien->lib_type_praticien}}</td> <!--TODO-->
+                        <td>{{$praticien->adresse_praticien}}, {{$praticien->cp_praticien}} {{$praticien->ville_praticien}}</td>
+                        <td><i class="fa-solid fa-list"></i></td>
+                        <td><i class="fa-solid fa-list"></i></td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        </div>
+    </section>
+@endif
 <script>
     function myFunction() {
         var input, filter, table, tr, td, i, txtValue;

@@ -1,5 +1,5 @@
 <?php
-namespace App\dao;
+namespace App\Dao;
 
 use Illuminate\Database\QueryException;
 use App\Exceptions\MonException;
@@ -45,4 +45,4 @@ class ServiceVisiteur {
     }
 }
 
-?>
+
