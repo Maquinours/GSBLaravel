@@ -20,6 +20,67 @@ class VisiteurController extends Controller
             return view('Vues/formLogin', compact('erreur'));
         }
     }
+    public function getFormSpecialite() {
+        try {
+            $erreur = "";
+            return view('Vues/formSpecialite', compact('erreur'));
+        } catch(MonException $e) {
+            $erreur = $e->getMessage();
+            return view('Vues/formSpecialite', compact('erreur'));
+        } catch(\Exception $e) {
+            $erreur = $e->getMessage();
+            return view('Vues/formSpecialite', compact('erreur'));
+        }
+    }
+
+    public function getFormActivite() {
+        try {
+            $erreur = "";
+            return view('Vues/formActivite', compact('erreur'));
+        } catch(MonException $e) {
+            $erreur = $e->getMessage();
+            return view('Vues/formActivite', compact('erreur'));
+        } catch(\Exception $e) {
+            $erreur = $e->getMessage();
+            return view('Vues/formActivite', compact('erreur'));
+        }
+    }
+    public function getListePraticien() {
+        try {
+            $erreur = "";
+            return view('Vues/listePraticien', compact('erreur'));
+        } catch(MonException $e) {
+            $erreur = $e->getMessage();
+            return view('Vues/listePraticien', compact('erreur'));
+        } catch(\Exception $e) {
+            $erreur = $e->getMessage();
+            return view('Vues/listePraticien', compact('erreur'));
+        }
+    }
+    public function getListeSpecialite() {
+        try {
+            $erreur = "";
+            return view('Vues/listeSpecialite', compact('erreur'));
+        } catch(MonException $e) {
+            $erreur = $e->getMessage();
+            return view('Vues/listeSpecialite', compact('erreur'));
+        } catch(\Exception $e) {
+            $erreur = $e->getMessage();
+            return view('Vues/listeSpecialite', compact('erreur'));
+        }
+    }
+    public function getListeActivite() {
+        try {
+            $erreur = "";
+            return view('Vues/listeActivite', compact('erreur'));
+        } catch(MonException $e) {
+            $erreur = $e->getMessage();
+            return view('Vues/listeActivite', compact('erreur'));
+        } catch(\Exception $e) {
+            $erreur = $e->getMessage();
+            return view('Vues/listeActivite', compact('erreur'));
+        }
+    }
 
     public function signIn() {
         try {

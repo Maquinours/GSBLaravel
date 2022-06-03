@@ -20,6 +20,12 @@ Route::get('/', function () {
 
 Route::get('/formLogin', [VisiteurController::class, 'getLogin']);
 
+Route::get('/formSpecialite',[VisiteurController::class,'getFormSpecialite']);
+Route::get('/formActivite',[VisiteurController::class,'getFormActivite']);
+Route::get('/listePraticien',[VisiteurController::class,'getListePraticien']);
+Route::get('/listeSpecialite',[VisiteurController::class,'getListeSpecialite']);
+Route::get('/listeActivite',[VisiteurController::class,'getListeActivite']);
+
 Route::post('/login', [VisiteurController::class, 'signIn']);
 
 Route::get('/getLogout', [VisiteurController::class, 'signOut']);

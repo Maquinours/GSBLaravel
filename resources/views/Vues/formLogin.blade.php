@@ -1,48 +1,205 @@
-@extends('layouts.master')
+@extends('master')
 @section('content')
-    {!! Form::open(['url' => 'validerFrais']) !!}
-    <div class="col-md-12  col-sm-12 well well-md">
-        <center><h1>{{$titreVue}}</h1></center>
-        <div class="form-horizontal">
-            <input type="hidden" name="id_frais" value="{{$unFrais->id_frais}}"/>
-            <div class="form-group">
-                <label class="col-md-3 col-sm-3 control-label">Période : </label>
-                <div class="col-md-2 col-sm-2">
-                    <input type="text" name="anneemois" value="{{date('Y-m')}}" class="form-control" placeholder="AAAAMM" required autofocus>
-                </div>
-            </div>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
 
-            <div class="form-group">
-                <label class="col-md-3 col-sm-3 control-label">Nb justificatifs : </label>
-                <div class="col-md-2  col-sm-2">
-                    <input type="number" name="nbjustificatifs" value="{{$unFrais->nbjustificatifs}}"  class="form-control" placeholder="Nombre de justificatifs" required>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-md-3 col-sm-3 control-label">Montant validé : </label>
-                <div class="col-md-3 col-sm-3">
-                    <label class="control-label">{{$unFrais->montantvalide}}</label>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
-                    <button type="submit" class="btn btn-default btn-primary">
-                        <span class="glyphicon glyphicon-ok"></span> Valider
-                    </button>
-                    &nbsp;
-                    <button type="button" class="btn btn-default btn-primary"
-                            onclick="javascript: window.location = '';">
-                        <span class="glyphicon glyphicon-remove"></span> Annuler</button>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
-                    <a href="{{ url('/getListeFraisHorsForfait')}}/{{$unFrais->id_frais}}"><button type="button" class="btn btn-default btn-primary"><span class="glyphicon glyphicon-list"></span> Frais hors forfait</button></a>
-                </div>
-            </div>
-            <div class="col-md-6 col-md-offset-3  col-sm-6 col-sm-offset-3">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <!--Stylesheet-->
+    <style media="screen">
+        html {
+            height: 100%;
+        }
+        body {
+            margin:0;
+            padding:0;
+            font-family: sans-serif;
+            background: linear-gradient(#141e30, #243b55);
+        }
 
-            </div>
+        .login-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 400px;
+            padding: 40px;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,.5);
+            box-sizing: border-box;
+            box-shadow: 0 15px 25px rgba(0,0,0,.6);
+            border-radius: 10px;
+        }
+
+        .login-box h2 {
+            margin: 0 0 30px;
+            padding: 0;
+            color: #fff;
+            text-align: center;
+        }
+
+        .login-box .user-box {
+            position: relative;
+        }
+
+        .login-box .user-box input {
+            width: 100%;
+            padding: 10px 0;
+            font-size: 16px;
+            color: #fff;
+            margin-bottom: 30px;
+            border: none;
+            border-bottom: 1px solid #fff;
+            outline: none;
+            background: transparent;
+        }
+        .login-box .user-box label {
+            position: absolute;
+            top:0;
+            left: 0;
+            padding: 10px 0;
+            font-size: 16px;
+            color: #fff;
+            pointer-events: none;
+            transition: .5s;
+        }
+
+        .login-box .user-box input:focus ~ label,
+        .login-box .user-box input:valid ~ label {
+            top: -20px;
+            left: 0;
+            color: #03e9f4;
+            font-size: 12px;
+        }
+
+        .login-box form a {
+            position: relative;
+            display: inline-block;
+            padding: 10px 20px;
+            color: #03e9f4;
+            font-size: 16px;
+            text-decoration: none;
+            text-transform: uppercase;
+            overflow: hidden;
+            transition: .5s;
+            margin-top: 40px;
+            letter-spacing: 4px
+        }
+
+        .login-box a:hover {
+            background: #03e9f4;
+            color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 5px #B3E5FC,
+            0 0 25px #03e9f4,
+            0 0 50px #03e9f4,
+            0 0 100px #B3E5FC;
+        }
+
+        .login-box a span {
+            position: absolute;
+            display: block;
+        }
+
+        .login-box a span:nth-child(1) {
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #03e9f4);
+            animation: btn-anim1 1s linear infinite;
+        }
+
+        @keyframes btn-anim1 {
+            0% {
+                left: -100%;
+            }
+            50%,100% {
+                left: 100%;
+            }
+        }
+
+        .login-box a span:nth-child(2) {
+            top: -100%;
+            right: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(180deg, transparent, #03e9f4);
+            animation: btn-anim2 1s linear infinite;
+            animation-delay: .25s
+        }
+
+        @keyframes btn-anim2 {
+            0% {
+                top: -100%;
+            }
+            50%,100% {
+                top: 100%;
+            }
+        }
+
+        .login-box a span:nth-child(3) {
+            bottom: 0;
+            right: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(270deg, transparent, #03e9f4);
+            animation: btn-anim3 1s linear infinite;
+            animation-delay: .5s
+        }
+
+        @keyframes btn-anim3 {
+            0% {
+                right: -100%;
+            }
+            50%,100% {
+                right: 100%;
+            }
+        }
+
+        .login-box a span:nth-child(4) {
+            bottom: -100%;
+            left: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(360deg, transparent, #03e9f4);
+            animation: btn-anim4 1s linear infinite;
+            animation-delay: .75s
+        }
+
+        @keyframes btn-anim4 {
+            0% {
+                bottom: -100%;
+            }
+            50%,100% {
+                bottom: 100%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+<div class="login-box">
+    <h2>𝐋𝐨𝐠𝐢𝐧</h2>
+    <form>
+        <div class="user-box">
+            <input type="text" name="" required="">
+            <label>Username</label>
         </div>
-    </div>
+        <div class="user-box">
+            <input type="password" name="" required="">
+            <label>Password</label>
+        </div>
+        <a href="https://codepen.io">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Submit
+        </a>
+    </form>
+</div>
+</body>
+</html>
 @stop
