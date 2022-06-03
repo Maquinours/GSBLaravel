@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('Vues/home');
 });
 
 Route::get('/formLogin', [VisiteurController::class, 'getLogin']);

@@ -191,9 +191,9 @@
 <body>
 <header id="navbar">
     <nav class="navbar-container container">
-        <a href="/" class="home-link">
-            <div class="navbar-logo"></div>
-            Website Name
+        <a href="{{url('/')}}" class="home-link">
+            <div> <img width="50" src="{{ asset('assets/images/logoGSB.png') }}"> </div>
+
         </a>
         <button
                 type="button"
@@ -208,10 +208,8 @@
         </button>
         <div id="navbar-menu" aria-labelledby="navbar-toggle">
             <ul class="navbar-links">
-                <li class="navbar-item"><a class="navbar-link" href="/about">About</a></li>
-                <li class="navbar-item"><a class="navbar-link" href="/blog">Blog</a></li>
-                <li class="navbar-item"><a class="navbar-link" href="/careers">Careers</a></li>
-                <li class="navbar-item"><a class="navbar-link" href="/contact">Contact</a></li>
+                <li class="navbar-item"><a class="navbar-link" href="/about">Praticiens</a></li>
+                <li class="navbar-item"><a class="navbar-link" href="/blog">Connexion</a></li>
             </ul>
         </div>
     </nav>

@@ -1,4 +1,4 @@
-@extends('master')
+@extends('layouts.master')
 @section('content')
 <!DOCTYPE html>
 <html lang="en">
@@ -137,8 +137,8 @@
                 <td>AUSTRALIAN COMPANY </td>
                 <td>$1.38</td>
                 <td>+2.01</td>
-                <td><i class="fa-solid fa-magnifying-glass-plus"></i></td>
-                <td><i class="fa-solid fa-magnifying-glass-plus"></i></td>
+                <td><i class="fa-solid fa-list"></i></td>
+                <td><i class="fa-solid fa-list"></i></td>
             </tr>
             <tr>
                 <td>AAD</td>
