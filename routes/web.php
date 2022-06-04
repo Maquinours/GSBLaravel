@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\VisiteurController;
 use App\Http\Controllers\PraticienController;
+use App\Http\Controllers\SpecialiteController;
+use \App\Http\Controllers\ActiviteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,8 +27,8 @@ Route::get('/formLogin', [VisiteurController::class, 'getLogin']);
 Route::get('/formSpecialite',[VisiteurController::class,'getFormSpecialite']);
 Route::get('/formActivite',[VisiteurController::class,'getFormActivite']);
 Route::get('/listePraticien',[PraticienController::class,'getPraticienList']);
-Route::get('/listeSpecialite',[VisiteurController::class,'getListeSpecialite']);
-Route::get('/listeActivite',[VisiteurController::class,'getListeActivite']);
+Route::get('/specialites/{idPraticien}',[SpecialiteController::class,'getSpecialitesList']);
+Route::get('/activites/{idPraticien}',[ActiviteController::class,'getActivitesList']);
 
 Route::post('/SignIn', [VisiteurController::class, 'signIn']);
 

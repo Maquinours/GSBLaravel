@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,7 +8,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://kit.fontawesome.com/131a59443f.js" crossorigin="anonymous"></script>
     <style>
-
+        a{
+            text-decoration: none;
+            color: inherit;
+        }
         h1{
             font-size: 30px;
             color: #fff;
@@ -99,8 +102,6 @@
         ::-webkit-scrollbar-thumb {
             -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
         }
-
-
     </style>
     <script>// '.tbl-content' consumed little space for vertical scrollbar, scrollbar width depend on browser/os/platfrom. Here calculate the scollbar width .
         $(window).on("load resize ", function() {
@@ -109,67 +110,48 @@
         }).resize();</script>
 </head>
 <body id="body">
-@isset($error)
-    <p>Une erreur a eu lieu. Veuillez réessayer ultérieurement</p>
-@else
-    <section>
-        <!--for demo wrap-->
-        <h1>Liste praticien</h1>
-        <div class="grid grid-2">
-            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
-        </div>
-        <div class="tbl-header">
-            <table cellpadding="0" cellspacing="0" border="0">
-                <thead>
+<section>
+    <!--for demo wrap-->
+    <h1>Liste des activités de {{$praticien->prenom_praticien}} {{$praticien->nom_praticien}}</h1>
+    <div class="tbl-header">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <thead>
+            <tr>
+                <th>Date</th>
+                <th>Lieu</th>
+                <th>Thème</th>
+                <th>Motif</th>
+                <th>Spécialiste</th>
+                <th> <a class="list-group-item" href="#">
+                        <i class="fas fa-plus" aria-hidden="true"></i>
+                    </a>
+                </th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+    <div class="tbl-content">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <tbody>
+            @foreach($activites as $activite)
                 <tr>
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>Type</th>
-                    <th>Adresse</th>
-                    <th>Spécialites</th>
-                    <th>Activités</th>
+                    <td>{{$activite->date_activite}}</td>
+                    <td>{{$activite->lieu_activite}}</td>
+                    <td>{{$activite->theme_activite}}</td>
+                    <td>{{$activite->motif_activite}}</td>
+                    <td>{{$activite->specialiste}}</td>
+                    <td>
+                        <a class="list-group-item" href="#"><i class="fas fa-edit" aria-hidden="true"></i></a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a class="list-group-item" href="#"><i class="fas fa-trash" aria-hidden="true"></i></a>
+                    </td>
                 </tr>
-                </thead>
-            </table>
-        </div>
-        <div class="tbl-content">
-            <table cellpadding="0" cellspacing="0" border="0" id="myTable">
-                <tbody>
-                @foreach($praticiens as $praticien)
-                    <tr>
-                        <td>{{$praticien->nom_praticien}}</td>
-                        <td>{{$praticien->prenom_praticien}}</td>
-                        <td>{{$praticien->lib_type_praticien}}</td>
-                        <td>{{$praticien->adresse_praticien}}, {{$praticien->cp_praticien}} {{$praticien->ville_praticien}}</td>
-                        <td><a href="{{url("specialites/$praticien->id_praticien")}}"><i class="fa-solid fa-list"></i></a></td>
-                        <td><a href="{{url("activites/$praticien->id_praticien")}}"><i class="fa-solid fa-list"></i></a></td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
-        </div>
-    </section>
-@endif
-<script>
-    function myFunction() {
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("myInput");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("myTable");
-        tr = table.getElementsByTagName("tr");
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
-</script>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
+</section>
+</div>
 </body>
 </html>
 @stop

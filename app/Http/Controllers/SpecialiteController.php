@@ -1,0 +1,17 @@
+<?php
+namespace App\Http\Controllers;
+
+use App\Dao\ServicePosseder;
+use App\Dao\ServicePraticien;
+
+class SpecialiteController extends Controller {
+    public function getSpecialitesList($idPraticien) {
+        try {
+            $praticien = ServicePraticien::getPraticien($idPraticien);
+            $specialites = ServicePosseder::getPosseders($idPraticien);
+            return view('Vues/listeSpecialites', compact(['praticien', 'specialites']));
+        } catch(\Exception $error) {
+            return view('Vues/listeSpecialites', compact('error'));
+        }
+    }
+}
