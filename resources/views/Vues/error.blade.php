@@ -3,7 +3,7 @@
 
 
     <p style="text-decoration-color: white">
-
+        {{$error}}
     </p>
 
 

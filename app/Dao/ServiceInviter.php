@@ -14,6 +14,26 @@ class ServiceInviter {
             ->get();
     }
 
+    public static function getInviter($idPraticien, $idActivite) {
+        return DB::table('inviter')
+            ->select()
+            ->join('activite_compl', 'inviter.id_activite_compl', '=', 'activite_compl.id_activite_compl')
+            ->where('inviter.id_praticien', '=', $idPraticien)
+            ->where('inviter.id_activite_compl', '=', $idActivite)
+            ->first();
+    }
+
+    public static function getAvailableActivites($idPraticien) {
+        return DB::table('activite_compl')
+            ->whereNotIn('id_activite_compl', function ($query) use ($idPraticien) {
+                $query->select('id_activite_compl')
+                    ->from('inviter')
+                    ->where('id_praticien', '=', $idPraticien)
+                    ->get();
+            })
+            ->get();
+    }
+
     public static function insertInviter($idPraticien, $idActivite, $specialiste) {
         DB::table('inviter')
             ->insert([

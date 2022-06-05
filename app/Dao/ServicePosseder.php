@@ -14,6 +14,15 @@ class ServicePosseder {
             ->get();
     }
 
+    public static function getPosseder($idPraticien, $idSpecialite) {
+        return DB::table('posseder')
+            ->select()
+            ->join('specialite', 'posseder.id_specialite', '=', 'specialite.id_specialite')
+            ->where('posseder.id_praticien', '=', $idPraticien)
+            ->where('posseder.id_specialite', '=', $idSpecialite)
+            ->first();
+    }
+
     public static function insertPosseder($idPraticien, $idSpecialite, $diplome, $coefPrescription) {
         DB::table('posseder')
             ->insert([
@@ -39,5 +48,16 @@ class ServicePosseder {
             ->where('id_praticien', '=', $idPraticien)
             ->where('id_specialite', '=', $idSpecialite)
             ->delete();
+    }
+
+    public static function getAvailablesSpecialites($idPraticien) {
+        return DB::table('specialite')
+            ->whereNotIn('id_specialite', function ($query) use ($idPraticien) {
+                $query->select('id_specialite')
+                    ->from('posseder')
+                    ->where('id_praticien', '=', $idPraticien)
+                    ->get();
+            })
+            ->get();
     }
 }

@@ -302,17 +302,28 @@
         <h1>Spécialité ajout/modification</h1>
         <ul>
             <li>
+                @isset($posseder)
+                    <select disabled>
+                        <option value="{{$posseder->id_specialite}}" selected>{{$posseder->lib_specialite}}</option>
+                    </select>
+                @else
                 <select required>
                     <option value="" selected disabled>-- Spécialité --</option>
-                    <option value="1">1</option>
-                    <option>2</option>
-                    <option>3</option>
+                    @foreach($specialites as $specialite)
+                        <option value="{{$specialite->id_specialite}}">{{$specialite->lib_specialite}}</option>
+                    @endforeach
                 </select>
+                @endisset
             </li>
             <li>
                 <div class="grid grid-2">
-                    <input type="text" placeholder="Diplôme" required>
-                    <input type="text" placeholder="Coef" required>
+                    @isset($posseder)
+                        <input type="text" placeholder="Diplôme" value="{{$posseder->diplome}}" required>
+                        <input type="text" placeholder="Coef" value="{{$posseder->coef_prescription}}" required>
+                    @else
+                        <input type="text" placeholder="Diplôme" required>
+                        <input type="text" placeholder="Coef" required>
+                    @endisset
                 </div>
             </li>
 

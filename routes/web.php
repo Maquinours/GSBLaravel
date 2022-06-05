@@ -24,8 +24,10 @@ Route::get('/', function () {
 
 Route::get('/formLogin', [VisiteurController::class, 'getLogin']);
 
-Route::get('/formSpecialite',[VisiteurController::class,'getFormSpecialite']);
-Route::get('/formActivite',[VisiteurController::class,'getFormActivite']);
+Route::get('/formUpdateSpecialite/{idPraticien}/{idSpecialite}',[SpecialiteController::class,'getUpdatePossederForm']);
+Route::get('/formInsertSpecialite/{idPraticien}', [SpecialiteController::class, 'getInsertPossederForm']);
+Route::get('/formInsertActivite/{idPraticien}', [ActiviteController::class,'getInsertInviterForm']);
+Route::get('/formUpdateActivite/{idPraticien}/{idActivite}', [ActiviteController::class, 'getUpdateInviterForm']);
 Route::get('/listePraticien',[PraticienController::class,'getPraticienList']);
 Route::get('/specialites/{idPraticien}',[SpecialiteController::class,'getSpecialitesList']);
 Route::get('/activites/{idPraticien}',[ActiviteController::class,'getActivitesList']);
@@ -35,3 +37,5 @@ Route::post('/SignIn', [VisiteurController::class, 'signIn']);
 Route::get('/signOut', [VisiteurController::class, 'signOut']);
 
 Route::get('/updatePassword/{pwd}', [VisiteurController::class, 'updatePassword']);
+
+Route::post('/updatePosseder', [SpecialiteController::class, 'updatePosseder']);

@@ -234,7 +234,7 @@
                     <td>{{$activite->motif_activite}}</td>
                     <td>{{$activite->specialiste}}</td>
                     <td>
-                        <a class="list-group-item" href="#"><i class="fas fa-edit" aria-hidden="true"></i></a>
+                        <a class="list-group-item" href={{url("formUpdateActivite/$praticien->id_praticien/$activite->id_activite_compl")}}><i class="fas fa-edit" aria-hidden="true"></i></a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <a class="list-group-item" href="#"><i class="fas fa-trash" aria-hidden="true"></i></a>
                     </td>

@@ -5,6 +5,13 @@
 <head>
     <meta charset="utf-8">
     <title>Activité</title>
+    @isset($inviter)
+    @else
+    <script type="text/javascript" src="{{asset('assets/js/selectActivite.js')}}"></script>
+    <script type="text/javascript">
+        init({!! json_encode($activites) !!});
+    </script>
+    @endisset
     <style>
         @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700");
 
@@ -302,40 +309,60 @@
         <h1>Activité ajout/modification</h1>
         <ul>
             <li>
-                <select required>
-                    <option value="" selected disabled>-- Date --</option>
-                    <option value="1">1</option>
-                    <option>2</option>
-                    <option>3</option>
+                @isset($inviter)
+                    <select disabled>
+                        <option selected>{{$inviter->date_activite}}</option>
+                    </select>
+                @else
+                <select required id="selectDate" onchange="dateChanged()">
+                    <option selected disabled>-- Date --</option>
+                    @foreach($activites as $activite)
+                        <option>{{$activite->date_activite}}</option>
+                    @endforeach
                 </select>
+                @endisset
             </li>
             <li>
-                <select required>
+                @isset($inviter)
+                    <select disabled>
+                        <option selected>{{$inviter->lieu_activite}}</option>
+                    </select>
+                @else
+                <select required id="selectLieu" onchange="lieuChanged()" disabled>
                     <option value="" selected disabled>-- Lieu --</option>
-                    <option value="1">1</option>
-                    <option>2</option>
-                    <option>3</option>
                 </select>
+                @endisset
             </li>
             <li>
-                <select required>
-                    <option value="" selected disabled >-- Thème --</option>
-                    <option value="1">1</option>
-                    <option>2</option>
-                    <option>3</option>
+                @isset($inviter)
+                    <select disabled>
+                        <option selected>{{$inviter->theme_activite}}</option>
+                    </select>
+                @else
+                <select required id="selectTheme" onchange="themeChanged()" disabled>
+                    <option selected disabled>-- Thème --</option>
                 </select>
+                @endisset
             </li>
             <li>
-                <select required>
-                    <option value="" selected disabled>-- Motif --</option>
-                    <option value="1">1</option>
-                    <option>2</option>
-                    <option>3</option>
+                @isset($inviter)
+                    <select disabled>
+                        <option selected>{{$inviter->motif_activite}}</option>
+                    </select>
+                @else
+                <select required id="selectMotif" onchange="motifChanged()" disabled>
+                    <option selected disabled>-- Motif --</option>
                 </select>
+                @endisset
             </li>
+            <input type="hidden" name="idActivite">
             <li>
                 <div class="grid grid-2">
+                    @isset($inviter)
+                        <input type="text" placeholder="Specialiste" value="{{$inviter->specialiste}}" required>
+                    @else
                     <input type="text" placeholder="Specialiste" required>
+                    @endisset
                 </div>
             </li>
 

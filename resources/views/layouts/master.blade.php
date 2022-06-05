@@ -218,7 +218,6 @@
         </div>
     </nav>
 </header>
-<script src="index.js"></script>
 <div class="container">
     @yield('content')
 </div>

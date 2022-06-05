@@ -229,7 +229,7 @@
                     <td>{{$specialite->diplome}}</td>
                     <td>{{$specialite->coef_prescription}}</td>
                     <td>
-                        <a class="list-group-item" href="#"><i class="fas fa-edit" aria-hidden="true"></i></a>
+                        <a class="list-group-item" href={{url("formUpdateSpecialite/$praticien->id_praticien/$specialite->id_specialite")}}><i class="fas fa-edit" aria-hidden="true"></i></a>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                          <a class="list-group-item" href="#"><i class="fas fa-trash" aria-hidden="true"></i></a>
                     </td>
