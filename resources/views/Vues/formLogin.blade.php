@@ -273,21 +273,24 @@
     </style>
 </head>
 <body>
+@isset($error)
+    <p>{{$error}}</p>
+@endisset
 <div class="login-box">
     <h2>𝐋𝐨𝐠𝐢𝐧</h2>
-    <form>
+    {{ Form::open(array('url' => 'SignIn')) }}
         <div class="user-box">
-            <input type="text" name="" required="">
+            <input type="text" name="login" required="">
             <label>Username</label>
         </div>
         <div class="user-box">
-            <input type="password" name="" required="">
+            <input type="password" name="password" required="">
             <label>Password</label>
         </div>
         <button class="custom-btn btn-3">
-            <span>Read More</span>
+            <span>Se connecter</span>
         </button>
-    </form>
+    {{ Form::close() }}
 </div>
 </body>
 </html>

@@ -32,6 +32,6 @@ Route::get('/activites/{idPraticien}',[ActiviteController::class,'getActivitesLi
 
 Route::post('/SignIn', [VisiteurController::class, 'signIn']);
 
-Route::get('/getLogout', [VisiteurController::class, 'signOut']);
+Route::get('/signOut', [VisiteurController::class, 'signOut']);
 
 Route::get('/updatePassword/{pwd}', [VisiteurController::class, 'updatePassword']);

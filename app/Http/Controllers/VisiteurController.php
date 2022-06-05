@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
 use App\Dao\ServiceVisiteur;
@@ -10,108 +11,41 @@ class VisiteurController extends Controller
 {
     public function getLogin() {
         try {
-            $erreur = "";
-            return view('Vues/formLogin', compact('erreur'));
-        } catch(MonException $e) {
-            $erreur = $e->getMessage();
-            return view('Vues/formLogin', compact('erreur'));
+            if(session('id'))
+                return view('Vues/home');
+            return view('Vues/formLogin');
         } catch(\Exception $e) {
-            $erreur = $e->getMessage();
-            return view('Vues/formLogin', compact('erreur'));
-        }
-    }
-    public function getFormSpecialite() {
-        try {
-            $erreur = "";
-            return view('Vues/formSpecialite', compact('erreur'));
-        } catch(MonException $e) {
-            $erreur = $e->getMessage();
-            return view('Vues/formSpecialite', compact('erreur'));
-        } catch(\Exception $e) {
-            $erreur = $e->getMessage();
-            return view('Vues/formSpecialite', compact('erreur'));
-        }
-    }
-
-    public function getFormActivite() {
-        try {
-            $erreur = "";
-            return view('Vues/formActivite', compact('erreur'));
-        } catch(MonException $e) {
-            $erreur = $e->getMessage();
-            return view('Vues/formActivite', compact('erreur'));
-        } catch(\Exception $e) {
-            $erreur = $e->getMessage();
-            return view('Vues/formActivite', compact('erreur'));
-        }
-    }
-    public function getListePraticien() {
-        try {
-            $erreur = "";
-            return view('Vues/listePraticien', compact('erreur'));
-        } catch(MonException $e) {
-            $erreur = $e->getMessage();
-            return view('Vues/listePraticien', compact('erreur'));
-        } catch(\Exception $e) {
-            $erreur = $e->getMessage();
-            return view('Vues/listePraticien', compact('erreur'));
-        }
-    }
-    public function getListeSpecialite() {
-        try {
-            $erreur = "";
-            return view('Vues/listeSpecialite', compact('erreur'));
-        } catch(MonException $e) {
-            $erreur = $e->getMessage();
-            return view('Vues/listeSpecialite', compact('erreur'));
-        } catch(\Exception $e) {
-            $erreur = $e->getMessage();
-            return view('Vues/listeSpecialite', compact('erreur'));
-        }
-    }
-    public function getListeActivite() {
-        try {
-            $erreur = "";
-            return view('Vues/listeActivite', compact('erreur'));
-        } catch(MonException $e) {
-            $erreur = $e->getMessage();
-            return view('Vues/listeActivite', compact('erreur'));
-        } catch(\Exception $e) {
-            $erreur = $e->getMessage();
-            return view('Vues/listeActivite', compact('erreur'));
+            $error = $e->getMessage();
+            return view('Vues/error', compact('error'));
         }
     }
 
     public function signIn() {
         try {
+            if(session('id'))
+                return view('Vues/home');
             $login = Request::input('login');
-            $pwd = Request::input('pwd');
-            $unVisiteur = new ServiceVisiteur();
-            $connected = $unVisiteur->login($login, $pwd);
-
-            if($connected) {
-                if(Session::get('type') == 'P') {
-                    return view('Vues/homePraticien');
-                } else {
-                    return view('home');
+            $pwd = Request::input('password');
+            $visiteur = ServiceVisiteur::getVisiteur($login);
+            if($visiteur) {
+                if(Hash::check($pwd, $visiteur->pwd_visiteur)) {
+                    Session::put('id', $visiteur->id_visiteur);
+                    return view('Vues/home');
                 }
-            } else {
-                $erreur = "Login ou mot de passe inconnu";
-                return view('Vues/formLogin', compact('erreur'));
             }
-        } catch(MonException $e) {
-            $erreur = $e->getMessage();
-            return view('Vues/formLogin', compact('erreur'));
+                $error = "Login ou mot de passe incorrect";
+                return view('Vues/formLogin', compact('error'));
         } catch(\Exception $e) {
-            $erreur = $e->getMessage();
-            return view('Vues/formLogin', compact('erreur'));
+            $error = $e->getMessage();
+            return view('Vues/error', compact('error'));
         }
     }
 
     public function signOut() {
-        $unVisiteur = new ServiceVisiteur();
-        $unVisiteur->logout();
-        return view('home');
+        if(!session('id'))
+            return view('Vues/home');
+        Session::forget('id');
+        return view('Vues/home');
     }
 
     public function updatePassword($pwd) {

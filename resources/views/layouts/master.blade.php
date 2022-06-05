@@ -208,8 +208,12 @@
         </button>
         <div id="navbar-menu" aria-labelledby="navbar-toggle">
             <ul class="navbar-links">
-                <li class="navbar-item"><a class="navbar-link" href="/about">Praticiens</a></li>
-                <li class="navbar-item"><a class="navbar-link" href="/blog">Connexion</a></li>
+                @if(session('id'))
+                    <li class="navbar-item"><a class="navbar-link" href={{url('listePraticien')}}>Praticiens</a></li>
+                    <li class="navbar-item"><a class="navbar-link" href={{url('signOut')}}>Déconnexion</a></li>
+                @else
+                    <li class="navbar-item"><a class="navbar-link" href={{url('formLogin')}}>Connexion</a></li>
+                @endisset
             </ul>
         </div>
     </nav>
