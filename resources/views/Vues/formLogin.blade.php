@@ -1,7 +1,6 @@
 @extends('layouts.master')
 @section('content')
-<!DOCTYPE html>
-<html lang="fr">
+
 <head>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -293,5 +292,5 @@
     {{ Form::close() }}
 </div>
 </body>
-</html>
+
 @stop

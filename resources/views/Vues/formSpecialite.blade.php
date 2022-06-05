@@ -1,9 +1,7 @@
 @extends('layouts.master')
 @section('content')
-<!doctype html>
-<html>
+
 <head>
-    <meta charset="utf-8">
     <title>Spécialité</title>
     <style>
         @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700");
@@ -150,7 +148,6 @@
 
         .my-form *:disabled {
             cursor: default;
-            filter: blur(2px);
         }
 
 
@@ -348,5 +345,4 @@
     </div>
 </form>
 </body>
-</html>
 @stop

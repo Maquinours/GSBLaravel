@@ -20,6 +20,7 @@
         body {
             height: 100vh;
             font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(#141e30, #243b55);
             line-height: 1.6;
         }
         .container {

@@ -1,9 +1,6 @@
 @extends('layouts.master')
 @section('content')
-        <!doctype html>
-<html>
 <head>
-    <meta charset="utf-8">
     <title>Activité</title>
     @isset($inviter)
     @else
@@ -157,7 +154,6 @@
 
         .my-form *:disabled {
             cursor: default;
-            filter: blur(2px);
         }
 
 
@@ -387,5 +383,4 @@
     </div>
 </form>
 </body>
-</html>
 @stop

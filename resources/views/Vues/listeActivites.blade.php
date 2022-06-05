@@ -1,7 +1,5 @@
 @extends('layouts.master')
 @section('content')
-        <!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +9,9 @@
         a{
             text-decoration: none;
             color: inherit;
+        }
+        a:hover{
+            color: #2aabd2;
         }
         h1{
             font-size: 30px;
@@ -215,10 +216,7 @@
                 <th>Thème</th>
                 <th>Motif</th>
                 <th>Spécialiste</th>
-                <th> <a class="list-group-item" href="#">
-                        <i class="fas fa-plus" aria-hidden="true"></i>
-                    </a>
-                </th>
+                <th>Modifier Supprimer</th>
             </tr>
             </thead>
         </table>
@@ -243,11 +241,11 @@
             </tbody>
         </table>
     </div>
-    <button class="custom-btn btn-3">
+    <button type="submit" class="custom-btn btn-3">
+        <!-- <input type="submit" hidden> -->
         <span>Ajouter</span>
     </button>
 </section>
-</div>
 </body>
-</html>
+
 @stop

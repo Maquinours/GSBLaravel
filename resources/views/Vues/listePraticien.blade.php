@@ -3,7 +3,13 @@
 <head>
     <script src="https://kit.fontawesome.com/131a59443f.js" crossorigin="anonymous"></script>
     <style>
-
+        a{
+            text-decoration: none;
+            color: inherit;
+        }
+        a:hover{
+            color: #2aabd2;
+        }
         h1{
             font-size: 30px;
             color: #fff;
@@ -174,5 +180,4 @@
     }
 </script>
 </body>
-</html>
 @stop
