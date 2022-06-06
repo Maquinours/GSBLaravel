@@ -46,7 +46,7 @@ class ServiceInviter {
     public static function updateInviter($idPraticien, $idActivite, $specialiste) {
         DB::table('inviter')
             ->where('id_praticien', '=', $idPraticien)
-            ->where('id_activite', '=', $idActivite)
+            ->where('id_activite_compl', '=', $idActivite)
             ->update([
                 'specialiste' => $specialiste
             ]);
@@ -55,7 +55,7 @@ class ServiceInviter {
     public static function deleteInviter($idPraticien, $idActivite) {
         DB::table('inviter')
             ->where('id_praticien', '=', $idPraticien)
-            ->where('id_activite', '=', $idActivite)
+            ->where('id_activite_compl', '=', $idActivite)
             ->delete();
     }
 }

@@ -300,22 +300,27 @@
 </head>
 <body>
 <br><br>
-<form class="my-form">
     <div class="container">
         <h1>Activité ajout/modification</h1>
+        @isset($inviter)
+            {{ Form::open(array('url' => 'updateActivite', 'class' => 'my-form')) }}
+        @else
+            {{ Form::open(array('url' => 'insertActivite', 'class' => 'my-form')) }}
+        @endisset
         <ul>
+            <input type="hidden" name="idPraticien" value="{{$idPraticien}}">
             <li>
                 @isset($inviter)
                     <select disabled>
                         <option selected>{{$inviter->date_activite}}</option>
                     </select>
                 @else
-                <select required id="selectDate" onchange="dateChanged()">
-                    <option selected disabled>-- Date --</option>
-                    @foreach($activites as $activite)
-                        <option>{{$activite->date_activite}}</option>
-                    @endforeach
-                </select>
+                    <select required id="selectDate" onchange="dateChanged()">
+                        <option value="" selected disabled>-- Date --</option>
+                        @foreach($activites as $activite)
+                            <option>{{$activite->date_activite}}</option>
+                        @endforeach
+                    </select>
                 @endisset
             </li>
             <li>
@@ -324,9 +329,9 @@
                         <option selected>{{$inviter->lieu_activite}}</option>
                     </select>
                 @else
-                <select required id="selectLieu" onchange="lieuChanged()" disabled>
-                    <option value="" selected disabled>-- Lieu --</option>
-                </select>
+                    <select required id="selectLieu" onchange="lieuChanged()" disabled>
+                        <option value="" selected disabled>-- Lieu --</option>
+                    </select>
                 @endisset
             </li>
             <li>
@@ -336,7 +341,7 @@
                     </select>
                 @else
                 <select required id="selectTheme" onchange="themeChanged()" disabled>
-                    <option selected disabled>-- Thème --</option>
+                    <option value="" selected disabled>-- Thème --</option>
                 </select>
                 @endisset
             </li>
@@ -347,17 +352,21 @@
                     </select>
                 @else
                 <select required id="selectMotif" onchange="motifChanged()" disabled>
-                    <option selected disabled>-- Motif --</option>
+                    <option value="" selected disabled>-- Motif --</option>
                 </select>
                 @endisset
             </li>
-            <input type="hidden" name="idActivite">
+            @isset($inviter)
+                <input type="hidden" name="idActivite" value="{{$inviter->id_activite_compl}}">
+            @else
+                <input type="hidden" name="idActivite">
+            @endisset
             <li>
                 <div class="grid grid-2">
                     @isset($inviter)
-                        <input type="text" placeholder="Specialiste" value="{{$inviter->specialiste}}" required>
+                        <input type="text" minlength="1" maxlength="1" name="specialiste" placeholder="Specialiste" value="{{$inviter->specialiste}}" required>
                     @else
-                    <input type="text" placeholder="Specialiste" required>
+                        <input type="text" minlength="1" maxlength="1" name="specialiste" placeholder="Specialiste" required>
                     @endisset
                 </div>
             </li>
@@ -380,6 +389,7 @@
                 </div>
             </li>
         </ul>
+        {{ Form::close() }}
     </div>
 </form>
 </body>

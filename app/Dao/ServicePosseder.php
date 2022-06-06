@@ -5,6 +5,13 @@ use Illuminate\Support\Facades\DB;
 use \Illuminate\Support\Collection;
 
 class ServicePosseder {
+
+    public static function getAllPosseders() {
+        return DB::table('posseder')
+            ->select()
+            ->get();
+    }
+
     public static function getPosseders($idPraticien): Collection
     {
         return DB::table('posseder')
@@ -48,6 +55,12 @@ class ServicePosseder {
             ->where('id_praticien', '=', $idPraticien)
             ->where('id_specialite', '=', $idSpecialite)
             ->delete();
+    }
+
+    public static function getAllSpecialites() {
+        return DB::table('specialite')
+            ->select()
+            ->get();
     }
 
     public static function getAvailablesSpecialites($idPraticien) {

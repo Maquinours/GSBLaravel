@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://kit.fontawesome.com/131a59443f.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{{asset('assets/js/confirm.js')}}"></script>
     <style>
         a{
             text-decoration: none;
@@ -216,7 +217,8 @@
                 <th>Thème</th>
                 <th>Motif</th>
                 <th>Spécialiste</th>
-                <th>Modifier Supprimer</th>
+                <th>Modifier</th>
+                <th>Supprimer</th>
             </tr>
             </thead>
         </table>
@@ -233,17 +235,19 @@
                     <td>{{$activite->specialiste}}</td>
                     <td>
                         <a class="list-group-item" href={{url("formUpdateActivite/$praticien->id_praticien/$activite->id_activite_compl")}}><i class="fas fa-edit" aria-hidden="true"></i></a>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a class="list-group-item" href="#"><i class="fas fa-trash" aria-hidden="true"></i></a>
+                    </td>
+                    <td>
+                        <a class="list-group-item" style="cursor: pointer;" onclick='needConfirm("Souhaitez-vous vraiment supprimer cette activité ?", "{{url("deleteActivite/$praticien->id_praticien/$activite->id_activite_compl")}}")'><i class="fas fa-trash" aria-hidden="true"></i></a>
                     </td>
                 </tr>
             @endforeach
             </tbody>
         </table>
     </div>
-    <button type="submit" class="custom-btn btn-3">
-        <!-- <input type="submit" hidden> -->
-        <span>Ajouter</span>
+    <button class="custom-btn btn-3">
+        <a href="{{url("formInsertActivite/$praticien->id_praticien")}}">
+            <span>Ajouter</span>
+        </a>
     </button>
 </section>
 </body>

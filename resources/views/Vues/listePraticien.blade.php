@@ -2,6 +2,8 @@
 @section('content')
 <head>
     <script src="https://kit.fontawesome.com/131a59443f.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{{asset('assets/js/search.js')}}"></script>
+    <script type="text/javascript">initSpecialites({!! $posseders !!})</script>
     <style>
         a{
             text-decoration: none;
@@ -110,27 +112,26 @@
         }).resize();</script>
 </head>
 <body id="body">
-@isset($error)
-    <p>Une erreur a eu lieu. Veuillez réessayer ultérieurement</p>
-@else
     <section>
         <!--for demo wrap-->
-        <h1>Liste praticien</h1>
+        <h1>Liste des praticiens</h1>
 
         <div class="grid grid-2">
-            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
-            <select required>
-                <option value="" selected disabled>-- Spécialité --</option>
-                <option value="1">1</option>
-                <option>2</option>
-                <option>3</option>
+            <input type="text" id="nameSearch" onkeyup="searchNom()" placeholder="Rechercher par nom">
+            <select id="specialiteSearch" onchange="searchSpecialite()">
+                <option selected disabled>-- Spécialité --</option>
+                @foreach($specialites as $specialite)
+                    <option value="{{$specialite->id_specialite}}">{{$specialite->lib_specialite}}</option>
+                @endforeach
             </select>
+            <button onclick="resetSearch()">Afficher tout</button>
         </div>
 
         <div class="tbl-header">
             <table cellpadding="0" cellspacing="0" border="0">
                 <thead>
                 <tr>
+                    <th style="display: none">Id</th>
                     <th>Nom</th>
                     <th>Prénom</th>
                     <th>Type</th>
@@ -142,10 +143,11 @@
             </table>
         </div>
         <div class="tbl-content">
-            <table cellpadding="0" cellspacing="0" border="0" id="myTable">
+            <table cellpadding="0" cellspacing="0" border="0" id="listPraticiens">
                 <tbody>
                 @foreach($praticiens as $praticien)
                     <tr>
+                        <td style="display: none">{{$praticien->id_praticien}}</td>
                         <td>{{$praticien->nom_praticien}}</td>
                         <td>{{$praticien->prenom_praticien}}</td>
                         <td>{{$praticien->lib_type_praticien}}</td>
@@ -158,26 +160,5 @@
             </table>
         </div>
     </section>
-@endif
-<script>
-    function myFunction() {
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("myInput");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("myTable");
-        tr = table.getElementsByTagName("tr");
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
-</script>
 </body>
 @stop

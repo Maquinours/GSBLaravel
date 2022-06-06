@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Dao\ServicePosseder;
 use App\Dao\ServicePraticien;
 
 class PraticienController extends Controller {
@@ -9,9 +10,11 @@ class PraticienController extends Controller {
             if(!session('id'))
                 return view('Vues/home');
             $praticiens = ServicePraticien::getPraticiens();
-            return view('Vues/listePraticien', compact('praticiens'));
+            $specialites = ServicePosseder::getAllSpecialites();
+            $posseders = ServicePosseder::getAllPosseders();
+            return view('Vues/listePraticien', compact(['praticiens', 'specialites', 'posseders']));
         } catch(\Exception $error) {
-            return view('Vues/listePraticien', compact('error'));
+            return view('Vues/error', compact('error'));
         }
     }
 }

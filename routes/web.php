@@ -28,6 +28,12 @@ Route::get('/formUpdateSpecialite/{idPraticien}/{idSpecialite}',[SpecialiteContr
 Route::get('/formInsertSpecialite/{idPraticien}', [SpecialiteController::class, 'getInsertPossederForm']);
 Route::get('/formInsertActivite/{idPraticien}', [ActiviteController::class,'getInsertInviterForm']);
 Route::get('/formUpdateActivite/{idPraticien}/{idActivite}', [ActiviteController::class, 'getUpdateInviterForm']);
+Route::post('/insertSpecialite', [SpecialiteController::class, 'insertPosseder']);
+Route::post('/updateSpecialite', [SpecialiteController::class, 'updatePosseder']);
+Route::get('/deleteSpecialite/{idPraticien}/{idSpecialite}', [SpecialiteController::class, 'deletePosseder']);
+Route::post('/insertActivite', [ActiviteController::class, 'insertInviter']);
+Route::post('/updateActivite', [ActiviteController::class, 'updateInviter']);
+Route::get('/deleteActivite/{idPraticien}/{idActivite}', [ActiviteController::class, 'deleteInviter']);
 Route::get('/listePraticien',[PraticienController::class,'getPraticienList']);
 Route::get('/specialites/{idPraticien}',[SpecialiteController::class,'getSpecialitesList']);
 Route::get('/activites/{idPraticien}',[ActiviteController::class,'getActivitesList']);

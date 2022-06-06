@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://kit.fontawesome.com/131a59443f.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{{asset('assets/js/confirm.js')}}"></script>
     <style>
         a{
             text-decoration: none;
@@ -213,7 +214,8 @@
                 <th>Libellé</th>
                 <th>Diplôme</th>
                 <th>Coef</th>
-                <th>Modifier Supprimer</th>
+                <th>Modifier</th>
+                <th>Supprimer</th>
             </tr>
             </thead>
         </table>
@@ -228,16 +230,20 @@
                     <td>{{$specialite->coef_prescription}}</td>
                     <td>
                         <a class="list-group-item" href={{url("formUpdateSpecialite/$praticien->id_praticien/$specialite->id_specialite")}}><i class="fas fa-edit" aria-hidden="true"></i></a>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                         <a class="list-group-item" href="#"><i class="fas fa-trash" aria-hidden="true"></i></a>
+                    </td>
+                    <td>&nbsp;
+                         <a class="list-group-item" style="cursor: pointer;" onclick='needConfirm("Souhaitez-vous vraiment supprimer la spécialité \"{{$specialite->lib_specialite}}\" ?", "{{url("deleteSpecialite/$praticien->id_praticien/$specialite->id_specialite")}}")'><i class="fas fa-trash" aria-hidden="true"></i></a>
                     </td>
                 </tr>
             @endforeach
             </tbody>
         </table>
     </div>
-    <button type="submit" class="custom-btn btn-3">
-        <!-- <input type="submit" hidden> -->
+
+    <button class="custom-btn btn-3">
+        <a href="{{url("formInsertSpecialite/$praticien->id_praticien")}}">
+        <span>Ajouter</span>
+        </a>
     </button>
 </section>
 
