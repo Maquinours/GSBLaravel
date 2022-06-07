@@ -1,10 +1,7 @@
 @extends('layouts/master')
 @section('content')
-
-
-    <p style="text-decoration-color: white">
-        {{$error}}
+    <p style="color: red">
+        Erreur inconnue
     </p>
-
-
+    <p style="visibility: hidden">{{$error}}</p>
 @stop

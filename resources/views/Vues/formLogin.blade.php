@@ -9,9 +9,6 @@
     <link type="text/css" rel="stylesheet" href="{{asset('assets/css/login.css')}}">
 </head>
 <body>
-@isset($error)
-    <p>{{$error}}</p>
-@endisset
 <div class="login-box">
     <h2>𝐋𝐨𝐠𝐢𝐧</h2>
     {{ Form::open(array('url' => 'SignIn')) }}
@@ -23,6 +20,9 @@
             <input type="password" name="password" required="">
             <label>Password</label>
         </div>
+        @isset($error)
+            <p style="color: red;">{{$error}}</p>
+        @endisset
         <button class="custom-btn btn-3">
             <span>Se connecter</span>
         </button>

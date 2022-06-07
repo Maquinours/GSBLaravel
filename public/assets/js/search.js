@@ -10,7 +10,9 @@ function initSpecialites(specialitesToLoad) {
 
 function searchNom() {
     const specialiteSearch = document.getElementById('specialiteSearch');
+    const typeSearch = document.getElementById("typeSearch");
     specialiteSearch.selectedIndex = 0;
+    typeSearch.selectedIndex = 0;
 
     const nameSearch = document.getElementById("nameSearch");
     const listePraticiens = document.getElementById("listPraticiens");
@@ -28,7 +30,9 @@ function searchNom() {
 
 function searchSpecialite() {
     const nameSearch = document.getElementById("nameSearch");
+    const typeSearch = document.getElementById("typeSearch");
     nameSearch.value = "";
+    typeSearch.selectedIndex = 0;
 
     const specialiteSearch = document.getElementById('specialiteSearch');
     const listePraticiens = document.getElementById("listPraticiens");
@@ -46,11 +50,33 @@ function searchSpecialite() {
     }
 }
 
-function resetSearch() {
+function searchType() {
     const nameSearch = document.getElementById("nameSearch");
     const specialiteSearch = document.getElementById('specialiteSearch');
     nameSearch.value = "";
     specialiteSearch.selectedIndex = 0;
+
+    const typeSearch = document.getElementById("typeSearch");
+    const listePraticiens = document.getElementById("listPraticiens");
+
+    const valueToSearch = typeSearch.value;
+
+    const tr = listePraticiens.getElementsByTagName("tr");
+    for(let i of tr) {
+        const td = i.getElementsByTagName("td")[3];
+        if(td) {
+            i.hidden = td.innerText !== valueToSearch;
+        }
+    }
+}
+
+function resetSearch() {
+    const nameSearch = document.getElementById("nameSearch");
+    const specialiteSearch = document.getElementById('specialiteSearch');
+    const typeSearch = document.getElementById("typeSearch");
+    nameSearch.value = "";
+    specialiteSearch.selectedIndex = 0;
+    typeSearch.selectedIndex = 0;
 
     const listePraticiens = document.getElementById("listPraticiens");
     const tr = listePraticiens.getElementsByTagName("tr");

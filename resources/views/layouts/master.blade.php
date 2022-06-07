@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Responsive Navbar</title>
+
+    <title>GSB</title>
+    <link rel="icon" type="image/png" href="{{asset('assets/images/logoGSB.png')}}" />
     <link type="text/css" rel="stylesheet" href="{{asset('assets/css/master.css')}}">
     <script>const navbarToggle = navbar.querySelector("#navbar-toggle");
         const navbarMenu = document.querySelector("#navbar-menu");

@@ -25,6 +25,12 @@
                     <option value="{{$specialite->id_specialite}}">{{$specialite->lib_specialite}}</option>
                 @endforeach
             </select>
+            <select id="typeSearch" onchange="searchType()">
+                <option selected disabled>-- Type --</option>
+                @foreach($types as $type)
+                    <option value="{{$type->lib_type_praticien}}">{{$type->lib_type_praticien}}</option>
+                @endforeach
+            </select>
             <button onclick="resetSearch()">Afficher tout</button>
         </div>
 
